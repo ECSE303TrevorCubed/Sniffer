@@ -1,0 +1,52 @@
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+  "adafruit-blinka>=10.4.0",
+  "adafruit-circuitpython-bme680>=3.7.16",
+  "bme68x>=1.0.4",
+  "matplotlib>=3.11.2",
+  "onnxruntime>=1.32.0",
+  "pandas>=3.1.1",
+  "scikit-learn>=1.9.1",
+  "skl2onnx>=1.20.0"
+]
+
+[project]
+name = "sniffer"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.14"
+dependencies = [
+  "adafruit-blinka>=10.4.0",
+  "adafruit-circuitpython-bme680>=3.7.16",
+  "bme68x>=1.0.4",
+  "matplotlib>=3.11.2",
+  "onnxruntime>=1.32.0",
+  "pandas>=3.1.1",
+  "scikit-learn>=1.9.1",
+  "skl2onnx>=1.20.0"
+]
+
+[project.scripts]
+sniff = "sniffer.__main__:main"
+
+[tool.basedpyright]
+extraPaths = ["."]
+useLibraryCodeForTypes = true
+reportMissingTypeStubs = "none"
+ignore = [
+  "typings",
+  "nix/store",
+  ".direnv"
+]
+exclude = [
+  "**/node_modules",
+  "**/__pycache__",
+  "**/.venv",
+  "**/.*"
+]
+venvPath = "."
+venv = ".venv"
